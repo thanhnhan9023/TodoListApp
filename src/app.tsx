@@ -10,10 +10,11 @@ import { Provider } from 'react-redux';
 import { PortalProvider } from '@gorhom/portal';
 import { useDidMount } from '@hooks';
 import { AppContainer } from '@navigation/app-navigation';
-import { store } from '@store/store';
+import { persistore, store } from '@store/store';
 import { useLoadFont } from '@theme/typography';
 import I18n from '@utils/i18n/i18n';
 import './app/themes/index';
+import { PersistGate } from 'redux-persist/integration/react';
 
 // const json = require('./app/assets/vector-icon/selection.json');
 
@@ -73,15 +74,17 @@ export const MyApp = () => {
       <StatusBar translucent backgroundColor={'transparent'} />
       <KeyboardProvider>
         <Provider store={store}>
-          <I18nextProvider i18n={I18n}>
-            <Suspense fallback={null}>
-              <PortalProvider>
-                <GestureHandlerRootView style={styles.root}>
-                  <AppContainer />
-                </GestureHandlerRootView>
-              </PortalProvider>
-            </Suspense>
-          </I18nextProvider>
+          <PersistGate persistor={persistore} loading={null}>
+            <I18nextProvider i18n={I18n}>
+              <Suspense fallback={null}>
+                <PortalProvider>
+                  <GestureHandlerRootView style={styles.root}>
+                    <AppContainer />
+                  </GestureHandlerRootView>
+                </PortalProvider>
+              </Suspense>
+            </I18nextProvider>
+          </PersistGate>
         </Provider>
       </KeyboardProvider>
     </SafeAreaProvider>

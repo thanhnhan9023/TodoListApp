@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialAppState: AppState = {
   profile: {},
-  token: undefined,
+  token: '23232',
   /**
    * default true to load app
    */

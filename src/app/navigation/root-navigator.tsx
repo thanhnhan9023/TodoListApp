@@ -1,19 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect } from 'react';
 
 import BootSplash from 'react-native-bootsplash';
 import { useSelector } from 'react-redux';
 
-import { APP_SCREEN, RootStackParamList } from '@navigation/screen-types';
+import { RootStackParamList } from '@navigation/screen-types';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { selectAppToken } from '@redux-selector/app';
-import { Home } from '@screens/authentication/home';
-import { Login } from '@screens/un-authentication/login';
+// import { selectAppToken } from '@redux-selector/app';
+// import { Home } from '@screens/authentication/home';
+// import { Login } from '@screens/un-authentication/login';
+
+import MyTabs from './TabBottom';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 export const RootNavigation = () => {
   // state
-  const token = useSelector(selectAppToken);
 
   // effect
   useEffect(() => {
@@ -31,8 +33,15 @@ export const RootNavigation = () => {
         headerShown: false,
         statusBarTranslucent: true,
         navigationBarColor: 'transparent',
-      }}>
-      {token === undefined ? (
+      }}
+      initialRouteName="TabMain">
+      <RootStack.Group
+        screenOptions={{
+          freezeOnBlur: true,
+        }}
+      />
+      <RootStack.Screen name={'TabMain'} component={MyTabs} />
+      {/* {token === undefined ? (
         <RootStack.Group
           screenOptions={{
             freezeOnBlur: true,
@@ -43,7 +52,7 @@ export const RootNavigation = () => {
         <RootStack.Group>
           <RootStack.Screen name={APP_SCREEN.HOME} component={Home} />
         </RootStack.Group>
-      )}
+      )} */}
     </RootStack.Navigator>
   );
 };

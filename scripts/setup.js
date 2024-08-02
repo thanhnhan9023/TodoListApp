@@ -5,7 +5,7 @@ const { getAndroidHome, getRubyVersion } = require('./common');
 
 (function () {
   try {
-    execSync('npx lefthook install', { stdio: 'inherit' });
+    // execSync('npx lefthook install', { stdio: 'inherit' });
 
     execSync('yarn patch-package', { stdio: 'inherit' });
 
@@ -56,5 +56,5 @@ const { getAndroidHome, getRubyVersion } = require('./common');
         console.log('                      ✨✨✨✨✨ Pod done!!! ✨✨✨✨✨');
       }
     }
-  } catch {}
+  } catch { }
 })();
