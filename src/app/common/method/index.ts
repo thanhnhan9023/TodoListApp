@@ -196,3 +196,14 @@ export const timeAgo = (
     options: { count: Math.floor(day_diff / 365) },
   };
 };
+
+export const hexToRgb = (hex, opacity) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+  return (
+    `${parseInt(result[1], 16)},${parseInt(result[2], 16)},${parseInt(
+      result[3],
+      16,
+    )}${opacity ? ',' + opacity : ''}` || null
+  );
+};

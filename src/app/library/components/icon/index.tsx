@@ -15,6 +15,7 @@ const SIZE = 24;
 export const Icon = ({
   icon,
   colorTheme,
+  colors,
   size = SIZE,
   resizeMode = 'contain',
 }: IconProps & Pick<ImageProps, 'resizeMode'>) => {
@@ -34,7 +35,7 @@ export const Icon = ({
       tintColor={
         colorTheme && typeof theme.color[colorTheme] === 'string'
           ? (theme.color[colorTheme] as string)
-          : undefined
+          : colors || undefined
       }
       resizeMode={resizeMode}
       source={icons[icon]}

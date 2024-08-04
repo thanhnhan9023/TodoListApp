@@ -1,16 +1,19 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable import/order */
+
 import React, { useEffect } from 'react';
-
 import BootSplash from 'react-native-bootsplash';
-import { useSelector } from 'react-redux';
-
-import { RootStackParamList } from '@navigation/screen-types';
+import {
+  APP_SCREEN,
+  MODAL_SCREEN,
+  RootStackParamList,
+} from '@navigation/screen-types';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import { selectAppToken } from '@redux-selector/app';
-// import { Home } from '@screens/authentication/home';
-// import { Login } from '@screens/un-authentication/login';
+
+import ModalAddCategory from '@screens/Home/ModalAddCategory';
 
 import MyTabs from './TabBottom';
+import TodoList from '@screens/Home/TodoList';
+import ModalAddToto from '@screens/Home/ModalAddToto';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -34,25 +37,27 @@ export const RootNavigation = () => {
         statusBarTranslucent: true,
         navigationBarColor: 'transparent',
       }}
-      initialRouteName="TabMain">
-      <RootStack.Group
-        screenOptions={{
-          freezeOnBlur: true,
-        }}
-      />
-      <RootStack.Screen name={'TabMain'} component={MyTabs} />
-      {/* {token === undefined ? (
-        <RootStack.Group
-          screenOptions={{
-            freezeOnBlur: true,
-          }}>
-          <RootStack.Screen name={APP_SCREEN.LOGIN} component={Login} />
-        </RootStack.Group>
-      ) : (
-        <RootStack.Group>
-          <RootStack.Screen name={APP_SCREEN.HOME} component={Home} />
-        </RootStack.Group>
-      )} */}
+      initialRouteName={APP_SCREEN.TABMAIN}>
+      <RootStack.Group>
+        <RootStack.Screen name={APP_SCREEN.TABMAIN} component={MyTabs} />
+      </RootStack.Group>
+      <RootStack.Group>
+        <RootStack.Screen
+          options={{
+            presentation: 'modal',
+          }}
+          name={MODAL_SCREEN.MODALADDCATEGORY}
+          component={ModalAddCategory}
+        />
+        <RootStack.Screen name={APP_SCREEN.TODOLIST} component={TodoList} />
+        <RootStack.Screen
+          options={{
+            presentation: 'transparentModal',
+          }}
+          name={MODAL_SCREEN.MODALADDTODO}
+          component={ModalAddToto}
+        />
+      </RootStack.Group>
     </RootStack.Navigator>
   );
 };

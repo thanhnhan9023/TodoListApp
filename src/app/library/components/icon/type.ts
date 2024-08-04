@@ -18,4 +18,6 @@ export interface IconProps {
    * @default undefined
    */
   icon: IconTypes;
+
+  colors?: string;
 }

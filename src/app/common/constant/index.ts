@@ -14,5 +14,6 @@ export const API_CONFIG = {
 
 export enum SLICE_NAME {
   APP = 'APP_',
+  TODO = 'TODO',
   AUTHENTICATION = 'AUTHENTICATION_',
 }

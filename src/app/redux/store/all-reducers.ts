@@ -1,8 +1,10 @@
-import { appReducer, authenticationReducer } from '@redux-slice';
+import { SLICE_NAME } from '@common/constant';
+import { appReducer, authenticationReducer, todoReducer } from '@redux-slice';
 import { combineReducers } from '@reduxjs/toolkit';
 
 export const allReducer = combineReducers({
   app: appReducer,
+  [SLICE_NAME.TODO]: todoReducer,
   authentication: authenticationReducer,
 });
 

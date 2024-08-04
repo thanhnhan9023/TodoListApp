@@ -1,5 +1,5 @@
 /* eslint-disable no-inline-comments */
-/* eslint-disable import/no-extraneous-dependencies */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { configureStore } from '@reduxjs/toolkit';
 import { allReducer } from '@store/all-reducers';
@@ -9,6 +9,7 @@ import { reactotronRedux } from 'reactotron-redux';
 import { persistReducer, persistStore } from 'redux-persist';
 
 import { listenerMiddleware } from '../listener';
+import { SLICE_NAME } from '@common/constant';
 
 Reactotron.configure({ name: 'todoList' }) // controls connection & communication settings
   .useReactNative() // add all built-in react native plugins
@@ -28,7 +29,11 @@ Reactotron.configure({ name: 'todoList' }) // controls connection & communicatio
  */
 
 const persistedReducer = persistReducer(
-  { key: 'root', storage: reduxPersistStorage },
+  {
+    key: 'root',
+    storage: reduxPersistStorage,
+    whitelist: [SLICE_NAME.TODO],
+  },
   allReducer,
 );
 

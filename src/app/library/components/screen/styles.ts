@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
   },
   inner: {
     flex: 1,
+    backgroundColor: 'transparent',
     width: '100%',
     overflow: 'hidden',
   },

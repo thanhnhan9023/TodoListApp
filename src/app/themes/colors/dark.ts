@@ -1,3 +1,5 @@
+import { hexToRgb } from '@common/method';
+
 export const darkColors = {
   background: '#141417',
 
@@ -61,4 +63,11 @@ export const darkColors = {
   neutral400: '#A4A2B4',
   neutral500: '#E0DEEA',
   neutral: '#EAE9F2',
+  black: '#000000',
+  primaryMain: '#6735B4',
+  grayBackGround: '#EBEBEB',
+  white: '#FFFFFF',
+  backgroundprimary: `rgba(${hexToRgb('#6735B4', 0.2)})`,
+  backgroundprimaryModal: `rgba(${hexToRgb('#6735B4', 0.7)})`,
+  grayText: '#828282',
 } as const;

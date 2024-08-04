@@ -17,3 +17,8 @@ export const selectRoot = createSelector(
   (state: RootState) => state,
   state => state,
 );
+
+export const selectListCategory = createSelector(
+  (state: RootState) => state,
+  state => state.TODO.listCategory,
+);

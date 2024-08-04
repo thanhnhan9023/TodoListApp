@@ -17,7 +17,7 @@ export const LocalImage = ({
   return (
     <View style={containerStyle}>
       <Image
-        style={[styles.img, styleOverride as ImageStyle]}
+        style={(styleOverride as ImageStyle) || styles.img}
         resizeMode={resizeMode}
         source={images[source ?? 'default']}
       />
